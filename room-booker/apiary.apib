@@ -1,0 +1,490 @@
+FORMAT: 1A
+HOST: https://alpha-api.app.net
+
+# NHS Room Booker
+
+##### TODO
+- Define URL Paramenters for specific requests
+- Endpoints for statistics
+
+### Error States
+We should use the common [HTTP Response Status Codes](https://github.com/for-GET/know-your-http-well/blob/master/status-codes.md) for all responses.
+
+# Group Sites
+
+## sites [/sites]
+
+### Fetch all sites [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "site_id": 1,
+                "sitename": "Auckland Park Hospital",
+                "address": "Westfield Road",
+                "town": "London",
+                "postcode": "W14 5XT",
+                "locality": "Tees"
+            },
+            {
+                "site_id": 2,
+                "sitename": "Lancaster House",
+                "address": "Falcon Court",
+                "town": "London",
+                "postcode": "NW7 7TT",
+                "locality": "HHR"
+            }
+        ]
+
+## sites/{site_id} [/sites/{site_id}]
+
++ Parameters
+    + site_id: 1 (string)
+
+
+### Fetch a site by id [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "site_id": 123,
+                "sitename": "Auckland Park Hospital",
+                "address": "Westfield Road",
+                "town": "London",
+                "postcode": "W14 5XT",
+                "locality": "Tees"
+            }
+        ]
+        
+### Update a site by id [PUT]
+
++ Request (application/json)
+
+            {
+                "site_id": 123,
+                "sitename": "Auckland Park Hospital",
+                "address": "Westfield Park",
+                "town": "London",
+                "postcode": "W14 5XT",
+                "locality": "Tees"
+            }
+        
++ Response 200 (application/json)
+
+            {
+                "site_id": 123,
+                "sitename": "Auckland Park Hospital",
+                "address": "Westfield Park",
+                "town": "London",
+                "postcode": "W14 5XT",
+                "locality": "Tees"
+            }
+        
+
+## sites/{site_id}/rooms [/sites/{site_id}/rooms]
+
++ Parameters
+    + site_id: 1 (string)
+
+### Fetch a list of rooms for a given site [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "room_id": 1,
+                "room_name": "Small Meeting Room 1",
+                "room_type": "",
+                "category": "Free access",
+                "individual_owner": "",
+                "team_owner": "",
+                "facilities": [{
+                    "capacity": 8,
+                    "catering": "",
+                    "disabled_access": true,
+                    "access": "Key can be collected from room owner."
+                }],
+                "equipment": [ "Wifi", "Printer", "Projection Screen" ],
+                "contact": "Jackie Moore",
+                "comments" : ""
+            },
+            {
+                "room_id": 2,
+                "room_name": "Small Meeting Room 2",
+                "room_type": "Meeting Room",
+                "category": "Managed",
+                "individual_owner": "London",
+                "team_owner": "W14 5XT",
+                "facilities": [{
+                    "capacity": 8,
+                    "catering": "",
+                    "disabled_access": true,
+                    "access": "Room not locked."
+                }],
+                "equipment": [ "Wifi", "Printer", "Projection Screen" ],
+                "contact": "Reception",
+                "comments" : ""
+            }
+        ]
+        
+# Group Rooms
+
+## rooms [/rooms]
+
+### Fetch all rooms [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "room_id": 1,
+                "room_name": "Small Meeting Room 1",
+                "room_type": "",
+                "category": "Free access",
+                "individual_owner": "",
+                "team_owner": "",
+                "facilities": [{
+                    "capacity": 8,
+                    "catering": "",
+                    "disabled_access": true,
+                    "access": "Key can be collected from room owner."
+                }],
+                "equipment": [ "Wifi", "Printer", "Projection Screen" ],
+                "contact": "Jackie Moore",
+                "comments" : ""
+            },
+            {
+                "room_id": 2,
+                "room_name": "Small Meeting Room 2",
+                "room_type": "Meeting Room",
+                "category": "Managed",
+                "individual_owner": "London",
+                "team_owner": "W14 5XT",
+                "facilities": [{
+                    "capacity": 8,
+                    "catering": "",
+                    "disabled_access": true,
+                    "access": "Room not locked."
+                }],
+                "equipment": [ "Wifi", "Printer", "Projection Screen" ],
+                "contact": "Reception",
+                "comments" : ""
+            }
+        ]
+
+## rooms/{room_id} [/rooms/{room_id}]
+
++ Parameters
+    + room_id: 2 (string)
+
+### Fetch a room by id [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "room_id": 2,
+                "room_name": "Small Meeting Room 1",
+                "room_type": "",
+                "category": "Free access",
+                "individual_owner": "",
+                "team_owner": "",
+                "facilities": [{
+                    "capacity": 8,
+                    "catering": "",
+                    "disabled_access": true,
+                    "access": "Key can be collected from room owner."
+                }],
+                "equipment": [ "Wifi", "Printer", "Projection Screen" ],
+                "contact": "Jackie Moore",
+                "comments" : ""
+            }
+        ]
+
+### Update a room by id [PUT]
+
++ Request (application/json)
+
+            {   
+                "room_id": 2,
+                "room_name": "Small Meeting Room 1",
+                "room_type": "",
+                "category": "Free access",
+                "individual_owner": "",
+                "team_owner": "",
+                "facilities": [{
+                    "capacity": 8,
+                    "catering": "",
+                    "disabled_access": true,
+                    "access": "Key can be collected from room owner."
+                }],
+                "equipment": [ "Wifi", "Printer", "Projection Screen" ],
+                "contact": "Jackie Moore",
+                "comments" : ""
+            }
+        
++ Response 201 (application/json)
+
+            {   
+                "room_id": 2,
+                "room_name": "Small Meeting Room 1",
+                "room_type": "",
+                "category": "Free access",
+                "individual_owner": "",
+                "team_owner": "",
+                "facilities": [{
+                    "capacity": 8,
+                    "catering": "",
+                    "disabled_access": true,
+                    "access": "Key can be collected from room owner."
+                }],
+                "equipment": [ "Wifi", "Printer", "Projection Screen" ],
+                "contact": "Jackie Moore",
+                "comments" : ""
+            }
+
+## rooms/{room_id}/bookings [/room/{room_id}/bookings/]
+
++ Parameters
+    + room_id: 2 (string)
+
+### Fetch a list of bookings for a given room [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "booking_id": 2,
+                "room_id": 1,
+                "room_type": "Premium, With All Equipments",
+                "booking_start": "2016-10-30T10:45UTC",
+                "booking_end": "2016-10-30T12:45UTC",
+                "status": "Approved",
+                "user_id": 1,
+                "user_name": "Arif",
+                "cancel_date" : null
+            },
+            {
+                "booking_id": 2,
+                "room_id": 1,
+                "room_type": "Premium, With All Equipments",
+                "booking_start": "2015-12-30T10:45UTC",
+                "booking_end": "2015-12-31T12:45UTC",
+                "status": "Approved",
+                "user_id": 1,
+                "user_name": "Arif",
+                "cancel_date" : null
+            },
+            {
+                "booking_id": 3,
+                "room_id": 1,
+                "room_type": "Premium, With All Equipments",
+                "booking_start": "2015-10-28T14:00UTC",
+                "booking_end": "2015-10-28T14:30UTC",
+                "status": "Pending approval",
+                "user_id": 1,
+                "user_name": "Arif",
+                "cancel_date" : null
+            }
+        ]
+
+#group Bookings
+
+## bookings [/bookings/]
+
+### Fetch All bookings  [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "booking_id": 2,
+                "room_id": 1,
+                "room_type": "Premium, With All Equipments",
+                "booking_start": "2016-10-30T10:45UTC",
+                "booking_end": "2016-10-30T12:45UTC",
+                "status": "Approved",
+                "user_id": 1,
+                "user_name": "Arif",
+                "cancel_date" : null
+            },
+            {
+                "booking_id": 2,
+                "room_id": 1,
+                "room_type": "Premium, With All Equipments",
+                "booking_start": "2015-12-30T10:45UTC",
+                "booking_end": "2015-12-31T12:45UTC",
+                "status": "Approved",
+                "user_id": 1,
+                "user_name": "Arif",
+                "cancel_date" : null
+            },
+            {
+                "booking_id": 3,
+                "room_id": 1,
+                "room_type": "Premium, With All Equipments",
+                "booking_start": "2015-10-28T14:00UTC",
+                "booking_end": "2015-10-28T14:30UTC",
+                "status": "Pending approval",
+                "user_id": 1,
+                "user_name": "Arif",
+                "cancel_date" : null
+            }
+        ]
+        
+### Create a booking [POST]
+
++ Request (application/json)
+
+        [
+            {
+                "room_type": "Premium, With All Equipments",
+                "booking_start": "2016-10-30T10:45UTC",
+                "booking_end": "2016-10-30T12:45UTC",
+                "user_id": 1,
+                "user_name": "Arif"
+            }
+        ]
+        
++ Response 201 (application/json)
+
+            {
+                "booking_id": 2,
+                "room_type": "Premium, With All Equipments",
+                "booking_start": "2016-10-30T10:45UTC",
+                "booking_end": "2016-10-30T12:45UTC",
+                "status": "Pending approval",
+                "user_id": 1,
+                "user_name": "Arif",
+                "cancel_date" : null
+            }
+
+## bookings/{booking_id} [/bookings/{booking_id}/]
+
++ Parameters
+    + booking_id: 2 (string)
+
+### Fetch a booking by id [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "booking_id": 2,
+                "room_id": 1,
+                "room_type": "Premium, With All Equipments",
+                "booking_start": "2016-10-30T10:45UTC",
+                "booking_end": "2016-10-30T12:45UTC",
+                "status": "Approved",
+                "user_id": 1,
+                "user_name": "Arif",
+                "cancel_date" : null
+            }
+        ]
+
+### Update a booking by id[PUT]
+
++ Request (application/json)
+
+        
+            {
+                "room_type": "Premium, With All Equipments",
+                "room_id": 1,
+                "booking_start": "2016-10-30T10:45UTC",
+                "booking_end": "2016-10-30T12:45UTC",
+                "status": "Approved",
+                "user_id": 1,
+                "user_name": "Arif",
+                "cancel_date" : null
+            }
+        
+        
++ Response 201 (application/json)
+
+            {
+                "room_type": "Premium, With All Equipments",
+                "room_id": 1,
+                "booking_start": "2016-10-30T10:45UTC",
+                "booking_end": "2016-10-30T12:45UTC",
+                "status": "Approved",
+                "user_id": 1,
+                "user_name": "Arif",
+                "cancel_date" : null
+            }
+
+### Delete a booking by id [DELETE]
+
++ Request (application/json)
+        
+            {}
+        
++ Response 201 (application/json)
+            
+            {}
+
+## bookings/{booking_id}/authorise/ [/bookings/{booking_id}/authorise/]
+
++ Parameters
+    + booking_id: 2 (string)
+
+### Authorise a booking [PUT]
+
++ Request (application/json)
+
+            {
+                "booking_id": 2,
+                "status": "Approved"
+            }
+        
++ Response 201 (application/json)
+
+            {
+                "booking_id": 2,
+                "status": "Approved"
+            }
+
+## bookings/{booking_id}/reject/ [/bookings/{booking_id}/reject/]
+
++ Parameters
+    + booking_id: 2 (string)
+
+### Reject a booking [PUT]
+
++ Request (application/json)
+
+            {
+                "booking_id": 2,
+                "status": "Rejected"
+            }
+        
++ Response 201 (application/json)
+        
+            {
+                "booking_id": 2,
+                "status": "Rejected"
+            }
+        
+# Group TODO
+
+### Sites
+- GET /sites - Fetches a list of all sites
+- GET /sites/{site_id} - Fetches a single site
+- PUT /sites/{site_id} - Updates a single site
+- GET /sites/{site_id}/rooms - Fetch a list of buildings
+
+### Rooms
+- GET /rooms - Fetches a list of all rooms
+- GET /rooms/{room_id} - Fetches a single room
+- PUT /rooms/{room_id} - Updates a single room
+- GET /rooms/{room_id}/bookings - Fetches all bookings with a given room
+
+### Bookings
+- GET /bookings - Fetches a list of all bookings
+- GET /bookings/{booking_id} - Fetches a single booking
+- PUT /bookings/{booking_id} - Updates a single booking  (Sends Email)
+- PUT /bookings/{booking_id}/authorise - Authorises a single booking (Sends Email)
+- PUT /bookings/{booking_id}/reject - Rejects a single booking (Sends Email)
+- POST /bookings/{booking_id} - Creates a single booking (Sends Email)
+- DELETE /bookings/{booking_id} - Deletes a single booking (Sends Email)

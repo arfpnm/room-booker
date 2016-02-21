@@ -1,0 +1,7 @@
+com/nhs/trust/spring/test/SpringTest.class
+com/nhs/trust/spring/test/cucumber/site/info/SiteTest.class
+com/nhs/trust/spring/test/cucumber/room/info/RoomTest.class
+com/nhs/trust/spring/test/cucumber/room/booking/RoomBookingTest.class
+com/nhs/trust/spring/test/cucumber/site/infosteps/SiteSteps.class
+com/nhs/trust/spring/test/cucumber/room/infosteps/RoomSteps.class
+com/nhs/trust/spring/test/cucumber/room/bookingsteps/RoomBookingSteps.class
